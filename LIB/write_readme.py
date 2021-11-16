@@ -17,7 +17,7 @@ def add_readme(name, dict_, string="", end="<br><br>"):
             map(lambda x: f"<th>{x:.2f}</th>", dict_["Колонки"])) + "</tr>"
         for row in range(len(dict_["Значения"])):
             string += f"<tr><th>{dict_['Индексы'][row]}</th>" + "".join(
-                map(lambda x: f"<th>{x}</th>", dict_["Значения"][row])) + "</tr>"
+                map(lambda x: f"<th>{x:.2f}</th>", dict_["Значения"][row])) + "</tr>"
         string += "</table>"
     if "Текст" in dict_:
         string += f"**{name}:**<br>\n{dict_['Текст']}"
