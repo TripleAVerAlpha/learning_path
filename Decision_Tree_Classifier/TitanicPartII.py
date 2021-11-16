@@ -7,7 +7,7 @@ answer = "# Построение Решающего дерева и тракто
 answer = add_readme("Задание", {"Текст": "Постройте Решающее дерево, определяющее выживет пассажир или нет. Что больше всего влияет на решение дерева?"}, answer)
 
 titanic = pandas.read_csv('Pandas/Data/titanic.csv', index_col='PassengerId')
-answer = add_readme("Входные данные", {"Таблица": titanic.head()}, answer)
+answer = add_readme("Входные данные", {"Таблица": titanic[['Survived', 'Pclass', 'Sex', 'Fare', 'Age']].head()}, answer)
 
 titanic = titanic[['Survived', 'Pclass', 'Sex', 'Fare', 'Age']].dropna()
 titanic.loc[(titanic.Sex == 'female'), 'Sex'] = 0
