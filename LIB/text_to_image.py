@@ -3,7 +3,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 def text_to_image(text, file=None):
     lines = tuple(l.rstrip() for l in text.split("\n"))
-    font = ImageFont.truetype('LIB/Font/Comic_CAT.otf', size=18)
+    font = ImageFont.truetype('LIB/Font/Comic_CAT.otf', size=60)
     pt2px = lambda pt: int(round(pt * 96.0 / 72))  # convert points to pixels
     max_width_line = max(lines, key=lambda s: font.getsize(s)[0])
     # max height is adjusted down because it too large visually for spacing
