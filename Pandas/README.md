@@ -9,6 +9,8 @@
 - Какое самое популярное женское имя на корабле? Извлеките из полного имени пассажира (колонка Name) его личное имя (First Name). Это задание — типичный пример того, с чем сталкивается специалист по анализу данных. Данные очень разнородные и шумные, но из них требуется извлечь необходимую информацию. Попробуйте вручную разобрать несколько значений столбца Name и выработать правило для извлечения имен, а также разделения их на женские и мужские.
 
 <br><br>
+**Входные данные:**
+<br><table><tr><th>Индексы</th><th>Survived</th><th>Pclass</th><th>Name</th><th>Sex</th><th>Age</th><th>SibSp</th><th>Parch</th><th>Ticket</th><th>Fare</th><th>Cabin</th><th>Embarked</th></tr><tr><th>1</th><th>0</th><th>3</th><th>Braund, Mr. Owen Harris</th><th>male</th><th>22.0</th><th>1</th><th>0</th><th>A/5 21171</th><th>7.25</th><th>nan</th><th>S</th></tr><tr><th>2</th><th>1</th><th>1</th><th>Cumings, Mrs. John Bradley (Florence Briggs Thayer)</th><th>female</th><th>38.0</th><th>1</th><th>0</th><th>PC 17599</th><th>71.2833</th><th>C85</th><th>C</th></tr><tr><th>3</th><th>1</th><th>3</th><th>Heikkinen, Miss. Laina</th><th>female</th><th>26.0</th><th>0</th><th>0</th><th>STON/O2. 3101282</th><th>7.925</th><th>nan</th><th>S</th></tr><tr><th>4</th><th>1</th><th>1</th><th>Futrelle, Mrs. Jacques Heath (Lily May Peel)</th><th>female</th><th>35.0</th><th>1</th><th>0</th><th>113803</th><th>53.1</th><th>C123</th><th>S</th></tr><tr><th>5</th><th>0</th><th>3</th><th>Allen, Mr. William Henry</th><th>male</th><th>35.0</th><th>0</th><th>0</th><th>373450</th><th>8.05</th><th>nan</th><th>S</th></tr></table><br><br>
 **Какое количество мужчин и женщин ехало на корабле?:**<br>
 Мужчин: 577<br>Женщин: 314<br><br>
 **Какой части пассажиров удалось выжить?:**<br>
