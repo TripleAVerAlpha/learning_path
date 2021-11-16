@@ -31,7 +31,7 @@ def add_global_readme():
         if not ("." in file):
             if os.path.exists("./" + file + "/README.md"):
                 with open(file + "/README.md", "r") as f:
-                    link = f"[{file}]({file + '/README.md'})"
+                    link = f"[{file}]({file})"
                     all_dir += "**" + link + "** - *" + f.readline().replace("# ", "").replace("\n", "*<br>\n")
 
     with open("README.md", "w") as readme:
