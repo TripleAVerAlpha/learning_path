@@ -36,3 +36,5 @@ def add_global_readme():
 
     with open("README.md", "w") as readme:
         readme.write(all_dir)
+
+add_global_readme()

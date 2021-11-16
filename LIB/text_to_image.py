@@ -19,6 +19,3 @@ def text_to_image(text, file=None):
     if not (file is None):
         image.save(file)
     return image
-
-
-text_to_image("Мой путь в IT:", "puth.png")
