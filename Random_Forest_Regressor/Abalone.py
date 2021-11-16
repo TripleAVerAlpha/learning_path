@@ -53,4 +53,3 @@ answer = add_readme("Ответ", {"Текст": f"Минимальное кол
 
 with open(dir_ + "README.md", "w") as readme:
     readme.write(answer)
-print(dir_ + "README.md")
