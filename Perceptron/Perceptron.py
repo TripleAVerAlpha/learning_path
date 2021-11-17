@@ -2,7 +2,6 @@ import pandas
 from sklearn.linear_model import Perceptron
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score
-
 from LIB.write_readme import add_readme
 
 dir_ = "Perceptron/"
