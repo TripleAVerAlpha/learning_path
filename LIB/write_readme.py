@@ -27,12 +27,14 @@ def add_readme(name, dict_, string="", end="<br><br>"):
 def add_global_readme():
     files = os.listdir("./")
     all_dir = "# Мой путь в обучении:<br> \n"
+    dir_data = []
     for file in files:
         if not ("." in file):
             if os.path.exists("./" + file + "/README.md"):
                 with open(file + "/README.md", "r") as f:
                     link = f"[{file}]({file})"
-                    all_dir += "**" + link + "** - *" + f.readline().replace("# ", "").replace("\n", "*<br>\n")
-
+                    dir_data.append([os.path.getmtime("./" + file), "**" + link + "** - *" + f.readline().replace("# ", "").replace("\n", "*<br>\n")])
+    dir_data.sort(key=lambda x: x[0])
+    all_dir += "".join(map(lambda x: x[1], dir_data))
     with open("README.md", "w") as readme:
         readme.write(all_dir)
