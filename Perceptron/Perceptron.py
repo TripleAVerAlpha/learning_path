@@ -1,9 +1,6 @@
-import numpy as np
 import pandas
 from sklearn.linear_model import Perceptron
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import KFold
-from sklearn.model_selection import cross_val_score
 from sklearn.metrics import accuracy_score
 
 from LIB.write_readme import add_readme
