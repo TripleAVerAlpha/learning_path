@@ -8,11 +8,12 @@ dir_ = "SVM/"
 answer = "# Метод опорных векторов. Опорные объекты"
 answer = add_readme("Задание", {"Текст": "Определите объекты которые разделяют выборку лучше всего."},  answer)
 data = pd.read_csv(dir_ + 'Data/svm-data.csv', header=None)
+data.columns = ["Цель", "x", "y"]
 answer = add_readme("Входные данные", {"Таблица": data}, answer)
 
 
 clf = svm.SVC(C=100000, kernel='linear')
-clf.fit(data[[1, 2]], data[0])
+clf.fit(data[["x", "y"]].values, data["Цель"].values)
 a = " ".join(map(lambda x: str(x), clf.support_))
 plotSVM(data.values, clf.support_, file=dir_+"Answer/plot.png")
 answer = add_readme("Разделение", {"Картинка": "Answer/plot.png"}, answer)

@@ -14,7 +14,7 @@ def add_readme(name, dict_, string="", end="<br><br>"):
         dict_['Индексы'] = dict_["Таблица"].index
         string += f"**{name}:**\n<br><table>" \
                   f"<tr><th>Индексы</th>" + "".join(
-            map(lambda x: f"<th>{x:.2f}</th>", dict_["Колонки"])) + "</tr>"
+            map(lambda x: f"<th>{x}</th>", dict_["Колонки"])) + "</tr>"
         for row in range(len(dict_["Значения"])):
             string += f"<tr><th>{dict_['Индексы'][row]}</th>" + "".join(
                 map(lambda x: f"<th>{x:.2f}</th>", dict_["Значения"][row])) + "</tr>"
