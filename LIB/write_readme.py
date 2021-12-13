@@ -1,7 +1,7 @@
 import os
 
 
-def add_readme(name, dict_, string="", end="<br><br>"):
+def add_readme(name, dict_, string="", end="<br><br>\n"):
     if string != "":
         string += "\n"
 
