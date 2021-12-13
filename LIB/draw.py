@@ -5,7 +5,7 @@ import sys
 from tensorflow.python.keras.utils.io_utils import path_to_string
 from tensorflow.python.util import nest
 from tensorflow.python.util.tf_export import keras_export
-from LIB.Setting import COLOR
+from LIB.setting import COLOR
 
 try:
     # pydot-ng is a fork of pydot that is better maintained.

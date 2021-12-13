@@ -1,20 +1,21 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from LIB.setting import COLOR
 
 
-def plot(X, Y, title="График", label=("x", "y"), color=('#0d1117', "#161b22", "#c9d1d9"), file=None):
+def plot(X, Y, title="График", label=("x", "y"), file=None):
     fig, ax = plt.subplots(figsize=(7, 5))
-    fig.patch.set_facecolor(color[0])
-    ax.patch.set_facecolor(color[0])
-    ax.stackplot(X, Y, color=color[1])
+    fig.patch.set_facecolor(COLOR[0])
+    ax.patch.set_facecolor(COLOR[0])
+    ax.stackplot(X, Y, color=COLOR[1])
 
     for i in ax.spines:
-        ax.spines[i].set_color(color[2])
-    ax.tick_params(colors=color[2], which='both')
+        ax.spines[i].set_color(COLOR[2])
+    ax.tick_params(colors=COLOR[2], which='both')
 
-    plt.xlabel(label[0], fontsize=14, fontweight="bold", color=color[2])
-    plt.ylabel(label[1], fontsize=14, fontweight="bold", color=color[2])
-    plt.title(title, fontsize=18, fontweight="bold", color=color[2])
+    plt.xlabel(label[0], fontsize=14, fontweight="bold", color=COLOR[2])
+    plt.ylabel(label[1], fontsize=14, fontweight="bold", color=COLOR[2])
+    plt.title(title, fontsize=18, fontweight="bold", color=COLOR[2])
 
     if file is None:
         plt.show()
@@ -22,21 +23,21 @@ def plot(X, Y, title="График", label=("x", "y"), color=('#0d1117', "#161b2
         plt.savefig(file)
 
 
-def multiplot(Y, title="График", label=("x", "y"), color=('#0d1117', "#161b22", "#c9d1d9"), file=None):
+def multiplot(Y, title="График", label=("x", "y"), file=None):
     fig, ax = plt.subplots(figsize=(7, 5))
-    fig.patch.set_facecolor(color[0])
-    ax.patch.set_facecolor(color[0])
+    fig.patch.set_facecolor(COLOR[0])
+    ax.patch.set_facecolor(COLOR[0])
     for i in range(len(Y)):
         X = range(len(Y[i]))
         ax.plot(X, Y[i])
 
     for i in ax.spines:
-        ax.spines[i].set_color(color[2])
-    ax.tick_params(colors=color[2], which='both')
+        ax.spines[i].set_color(COLOR[2])
+    ax.tick_params(colors=COLOR[2], which='both')
 
-    plt.xlabel(label[0], fontsize=14, fontweight="bold", color=color[2])
-    plt.ylabel(label[1], fontsize=14, fontweight="bold", color=color[2])
-    plt.title(title, fontsize=18, fontweight="bold", color=color[2])
+    plt.xlabel(label[0], fontsize=14, fontweight="bold", color=COLOR[2])
+    plt.ylabel(label[1], fontsize=14, fontweight="bold", color=COLOR[2])
+    plt.title(title, fontsize=18, fontweight="bold", color=COLOR[2])
 
     if file is None:
         plt.show()
@@ -46,6 +47,13 @@ def multiplot(Y, title="График", label=("x", "y"), color=('#0d1117', "#161
 
 def plotImage(file, data):
     fig, ax = plt.subplots(figsize=(7, 5))
+    fig.patch.set_facecolor(COLOR[0])
+    ax.patch.set_facecolor(COLOR[0])
+    ax.patch.set_facecolor(COLOR[0])
+    for i in ax.spines:
+        ax.spines[i].set_color(COLOR[2])
+    ax.tick_params(colors=COLOR[2], which='both')
+
     ax.imshow(data)
     if file is None:
         plt.show()
@@ -53,7 +61,7 @@ def plotImage(file, data):
         plt.savefig(file)
 
 
-def plotSVM(x, o, title="График", label=("x", "y"), color=('#0d1117', "#373b42", "#c9d1d9"), file=None):
+def plotSVM(x, o, title="График", label=("x", "y"), file=None):
     x = list(x)
     x1 = []
     x2 = []
@@ -91,19 +99,19 @@ def plotSVM(x, o, title="График", label=("x", "y"), color=('#0d1117', "#37
     x2 = np.array(x2).transpose()
 
     fig, ax = plt.subplots(figsize=(7, 5))
-    fig.patch.set_facecolor(color[0])
-    ax.patch.set_facecolor(color[0])
+    fig.patch.set_facecolor(COLOR[0])
+    ax.patch.set_facecolor(COLOR[0])
     for i in ax.spines:
-        ax.spines[i].set_color(color[2])
-    ax.tick_params(colors=color[2], which='both')
+        ax.spines[i].set_color(COLOR[2])
+    ax.tick_params(colors=COLOR[2], which='both')
 
-    ax.scatter(x1[1], x1[2], s=20, color=color[2])
-    ax.scatter(x2[1], x2[2], s=20, color=color[1])
-    ax.plot(range(2), l1, color=color[2])
-    ax.plot(range(2), l2, color=color[1])
+    ax.scatter(x1[1], x1[2], s=20, color=COLOR[2])
+    ax.scatter(x2[1], x2[2], s=20, color=COLOR[1])
+    ax.plot(range(2), l1, color=COLOR[2])
+    ax.plot(range(2), l2, color=COLOR[1])
 
-    plt.xlabel(label[0], fontsize=14, fontweight="bold", color=color[2])
-    plt.ylabel(label[1], fontsize=14, fontweight="bold", color=color[2])
+    plt.xlabel(label[0], fontsize=14, fontweight="bold", color=COLOR[2])
+    plt.ylabel(label[1], fontsize=14, fontweight="bold", color=COLOR[2])
     plt.title = title
     if file is None:
         plt.show()

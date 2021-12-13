@@ -1,4 +1,4 @@
-from setting import *
+import pandas as pd
 import tensorflow.keras as keras
 from LIB.write_readme import add_readme
 from LIB.plot import plotImage
@@ -25,15 +25,17 @@ def fitModel(name, data, model, loss, optimizer, metrics, log):
                   metrics=metrics)
 
     log_dir = log + name
-    dot_img_file = f'{log_dir}/model.png'
-    plot_model(model, dot_img_file, show_shapes=True)
     tensorboard_callback = TensorBoard(log_dir=log_dir, histogram_freq=1)
 
-    model.fit(x=data['train']['x'],
-              y=data['train']['y'],
-              epochs=EPOCHS,
-              validation_data=(data['test']['x'], data['test']['y']),
-              callbacks=[tensorboard_callback])
+    history = model.fit(x=data['train']['x'],
+                        y=data['train']['y'],
+                        epochs=EPOCHS,
+                        validation_data=(data['test']['x'], data['test']['y']),
+                        callbacks=[tensorboard_callback])
+
+    dot_img_file = f'{log_dir}/model.png'
+    plot_model(model, dot_img_file, show_shapes=True)
+    return history.history
 
 
 def build_model(n, kol_layer):
@@ -70,11 +72,28 @@ data = {
         "y": y_test
     }
 }
-layer_kol = [1]
-my_model = [264]
+layer_kol = [1, 2, 3]
+my_model = [16, 32, 128, 264, 512]
+all_model = []
+columns = ["n", "l"]
+for i in range(EPOCHS):
+    columns.append(f"loss_{i+1}")
+history = pd.DataFrame()
 for l in layer_kol:
     for n in my_model:
-        fitModel(f'default_{n}_{l}', data, build_model(n, l), LOSS, OPTIMIZER, METRICS, TENSORBOARD_LOG)
+        print(f"Тестирую модель {n} нейронов и {l} слоев")
+        all_model.append(f"- {n} нейронов и {l} слоев")
+        h = fitModel(f'default_{n}_{l}', data, build_model(n, l), LOSS, OPTIMIZER, METRICS, TENSORBOARD_LOG)
+        h = pd.Series([n, l, *h["val_loss"]])
+        print(h)
+        history = history.append(h, ignore_index=True)
+        print(history)
+history.columns = columns
+history.to_csv(TENSORBOARD_LOG+"history.csv")
+
+answer = add_readme(f"Протестированные модели", {"Текст": "\n ".join(all_model)}, answer)
+answer = add_readme(f"Одна из тестируемых моделей {n}-{l}", {"Картинка": f"Log/fit/default_{n}_{l}/model.png"}, answer)
+
 
 with open(DIR + "README.md", "w") as readme:
     readme.write(answer)
