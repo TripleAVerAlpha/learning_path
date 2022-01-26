@@ -7,7 +7,7 @@ def plot(X, Y, title="График", label=("x", "y"), file=None):
     fig, ax = plt.subplots(figsize=(7, 5))
     fig.patch.set_facecolor(COLOR[0])
     ax.patch.set_facecolor(COLOR[0])
-    ax.stackplot(X, Y, color=COLOR[1])
+    ax.plot(X, Y, color=COLOR[1])
 
     for i in ax.spines:
         ax.spines[i].set_color(COLOR[2])

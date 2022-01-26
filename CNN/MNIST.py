@@ -72,24 +72,26 @@ data = {
         "y": y_test
     }
 }
-layer_kol = [1, 2, 3]
-my_model = [16, 32, 128, 264, 512]
-all_model = []
-columns = ["n", "l"]
-for i in range(EPOCHS):
-    columns.append(f"loss_{i+1}")
-history = pd.DataFrame()
-for l in layer_kol:
-    for n in my_model:
-        print(f"Тестирую модель {n} нейронов и {l} слоев")
-        all_model.append(f"- {n} нейронов и {l} слоев")
-        h = fitModel(f'default_{n}_{l}', data, build_model(n, l), LOSS, OPTIMIZER, METRICS, TENSORBOARD_LOG)
-        h = pd.Series([n, l, *h["val_loss"]])
-        print(h)
-        history = history.append(h, ignore_index=True)
-        print(history)
-history.columns = columns
-history.to_csv(TENSORBOARD_LOG+"history.csv")
+# layer_kol = [1, 2, 3]
+# my_model = [16, 32, 128, 264, 512]
+# all_model = []
+# columns = ["n", "l"]
+# for i in range(EPOCHS):
+#     columns.append(f"loss_{i+1}")
+# history = pd.DataFrame()
+# for l in layer_kol:
+#     for n in my_model:
+#         print(f"Тестирую модель {n} нейронов и {l} слоев")
+#         all_model.append(f"- {n} нейронов и {l} слоев")
+#         h = fitModel(f'default_{n}_{l}', data, build_model(n, l), LOSS, OPTIMIZER, METRICS, TENSORBOARD_LOG)
+#         history = history.append(h, ignore_index=True)
+# history.columns = columns
+# history.to_csv(TENSORBOARD_LOG+"history.csv")
+history = pd.read_csv(TENSORBOARD_LOG+"history.csv", index_col=0)
+n_group = history.groupby("n").mean()
+for i in n_group.index:
+    m = min(n_group.loc[i, "loss_1":"loss_10"])
+    print(n_group.loc[i, "loss_1":"loss_10"])
 
 answer = add_readme(f"Протестированные модели", {"Текст": "\n ".join(all_model)}, answer)
 answer = add_readme(f"Одна из тестируемых моделей {n}-{l}", {"Картинка": f"Log/fit/default_{n}_{l}/model.png"}, answer)
